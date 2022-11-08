@@ -12,10 +12,9 @@ let currentScore = 0;
 let activePlayer = 0;
 const scores = [0, 0];
 let playing = true;
-// Start
+//! Start
 diceEl.classList.add("hidden");
-
-// Roll logic
+//! Roll logic
 rollBtn.addEventListener("click", genNum);
 
 function switchPlayer() {
@@ -44,7 +43,7 @@ function genNum() {
   }
 }
 
-// Hold logic
+//! Hold logic
 
 holdBtn.addEventListener("click", holdFn);
 
@@ -69,3 +68,5 @@ function holdFn() {
     }
   }
 }
+
+// ! Rest logic
