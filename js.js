@@ -6,6 +6,8 @@ const diceEl = document.querySelector(".dice");
 const newBtn = document.querySelector(".btn--new");
 const rollBtn = document.querySelector(".btn--roll");
 const holdBtn = document.querySelector(".btn--hold");
+let currentScore = 0;
+let activePlayer = 0;
 
 // Start
 diceEl.classList.add("hidden");
@@ -13,16 +15,20 @@ diceEl.classList.add("hidden");
 // Roll logic
 rollBtn.addEventListener("click", genNum);
 
-let currentScore = 0;
 function genNum() {
-  // Generate a random dice roll 
+  // Generate a random dice roll
   const dice = Math.trunc(Math.random() * 6) + 1;
-  // Display 
+  // Display
   diceEl.classList.remove("hidden");
   diceEl.src = `dice-${dice}.png`;
   // Logic
   if (dice !== 1) {
     currentScore += dice;
-    current0.textContent = currentScore;
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
+  } else {
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    currentScore = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
   }
 }
