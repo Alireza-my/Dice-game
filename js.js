@@ -7,7 +7,7 @@ const newBtn = document.querySelector(".btn--new");
 const rollBtn = document.querySelector(".btn--roll");
 const holdBtn = document.querySelector(".btn--hold");
 
-// start
+// Start
 diceEl.classList.add("hidden");
 
 // Roll logic
@@ -15,9 +15,12 @@ rollBtn.addEventListener("click", genNum);
 
 let currentScore = 0;
 function genNum() {
+  // Generate a random dice roll 
   const dice = Math.trunc(Math.random() * 6) + 1;
+  // Display 
   diceEl.classList.remove("hidden");
   diceEl.src = `dice-${dice}.png`;
+  // Logic
   if (dice !== 1) {
     currentScore += dice;
     current0.textContent = currentScore;
