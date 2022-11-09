@@ -10,7 +10,7 @@ const player0 = document.querySelector(".player--0");
 const player1 = document.querySelector(".player--1");
 let currentScore = 0;
 let activePlayer = 0;
-const scores = [0, 0];
+let scores = [0, 0];
 let playing = true;
 //! Start
 diceEl.classList.add("hidden");
@@ -69,4 +69,26 @@ function holdFn() {
   }
 }
 
-// ! Rest logic
+// ! Reset logic
+
+newBtn.addEventListener("click", resetGame);
+
+function resetGame() {
+  playing = true;
+  diceEl.classList.add("hidden");
+  currentScore = 0;
+  for (let i = 0; i <= 1; i++) {
+    scores[i] = 0;
+    document.getElementById(`score--${i}`).textContent = 0;
+    document.getElementById(`current--${i}`).textContent = 0;
+  }
+
+  // remove winner style
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove("player--winner");
+
+  // player 0 begin the game
+  player0.classList.add("player--active");
+  player1.classList.remove("player--active");
+}
